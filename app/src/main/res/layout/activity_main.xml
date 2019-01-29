@@ -13,4 +13,18 @@
         android:layout_centerHorizontal="true"
         android:text="Get Data"/>
 
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        android:layout_below="@id/btnGetData">
+
+        <quanduong.com.demomyhotkey.customview.MyHorizontalView
+            android:id="@+id/layoutContainer"
+            android:layout_width="match_parent"
+            android:layout_height="48dp" />
+
+    </HorizontalScrollView>
+
 </RelativeLayout>
