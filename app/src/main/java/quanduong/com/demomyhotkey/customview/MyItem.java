@@ -4,8 +4,6 @@ import android.content.Context;
 import android.graphics.PorterDuff;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -43,18 +41,16 @@ public class MyItem extends LinearLayout {
         inflate(context, R.layout.my_item_layout, this);
         itemTextView = findViewById(R.id.textItem);
         layoutContent = findViewById(R.id.layoutContentItem);
-        LayoutParams param = (LayoutParams) layoutContent.getLayoutParams();
-        setLayoutParams(param);
-        setGravity(Gravity.CENTER);
+
         getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-                Log.d("QUAN123", "onGlobalLayout: witdh = " + layoutContent.getWidth() + " --- height = " + layoutContent.getHeight());
                 layoutContent.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                LayoutParams param = (LayoutParams) layoutContent.getLayoutParams();
                 if(StringUtils.WordCount(itemTextView.getText().toString()) > 1){
-                    LayoutParams param = (LayoutParams) layoutContent.getLayoutParams();
-                    param.width = layoutContent.getWidth() * 7 / 10 ;
-                    setLayoutParams(param);
+                    param.width = itemTextView.getWidth() * 9 / 10 ;
+                    param.setMargins(param.leftMargin, 0, 0, 0);
+                    layoutContent.setLayoutParams(param);
                 }
             }
         });
@@ -63,31 +59,6 @@ public class MyItem extends LinearLayout {
     public MyItem setText(String text) {
         itemTextView.setText(text);
         return this;
-    }
-
-    public void setLayoutWidth() {
-//        Log.d("QUAN123", "setLayoutWidth: text = " + itemTextView.getText());
-////        int width = layoutContent.getWidth() / 2;
-////        Log.d("QUAN123", "setLayoutWidth: width = " + width);
-////        Log.d("QUAN123", "setLayoutWidth: widthLayout = " + layoutContent.getWidth());
-////        LayoutParams param = (LayoutParams) layoutContent.getLayoutParams();
-////        param.width = width;
-////        Log.d("QUAN123", "width: text = " + param.width);
-////        Log.d("QUAN123", "height: text = " + param.height);
-//
-////        setLayoutParams(param);
-//        getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-//            @Override
-//            public void onGlobalLayout() {
-//                layoutContent.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-//                if(StringUtils.WordCount(itemTextView.getText().toString()) > 1){
-//                    LayoutParams param = (LayoutParams) layoutContent.getLayoutParams();
-//                    param.width = layoutContent.getWidth() * 7 / 10 ;
-//                    setLayoutParams(param);
-//                }
-//            }
-//        });
-//        return this;
     }
 
     public String getText(){

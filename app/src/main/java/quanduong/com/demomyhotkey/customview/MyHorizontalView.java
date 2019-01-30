@@ -48,23 +48,16 @@ public class MyHorizontalView extends LinearLayout {
         return null;
     }
 
-
-
     public void build() {
         if (items != null && items.size() > 0) {
             for (int i = 0; i < items.size(); i++) {
                 final MyItem item = items.get(i);
                 final int position = i;
 
-//                if (position == 0) {
-//                    doSelectItem(item);
-//                }
-
                 item.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         if (mItemClickListener != null) {
-//                            doSelectItem(item);
                             mItemClickListener.onItemClicked(items.get(position));
                         }
                     }
@@ -78,16 +71,15 @@ public class MyHorizontalView extends LinearLayout {
         this.mItemClickListener = itemClickedListener;
     }
 
-
-
-
-
-
+    public void clearView(){
+        items = null;
+        removeAllViews();
+    }
 
     public interface OnItemClickListener {
 
         /**
-         * Called when a tab click.
+         * Called when an item click.
          *
          * @param clickedItem
          */

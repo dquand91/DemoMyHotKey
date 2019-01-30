@@ -3,21 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="70dp"
-    tools:layout_width="50dp"
+    android:minWidth="60dp"
+    android:layout_height="60dp"
     android:background="@drawable/bg_item"
     android:gravity="center"
     android:id="@+id/layoutContentItem"
     android:padding="5dp"
-    android:layout_marginLeft="5dp"
-    android:layout_marginRight="5dp">
+    android:layout_marginLeft="10dp"
+    tools:layout_width="50dp"
+    >
 
     <TextView
         android:id="@+id/textItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15sp"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         tools:text="item text"
         android:textAlignment="center"
         android:maxLines="2"/>
